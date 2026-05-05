@@ -7,9 +7,6 @@ venv/
 # Django
 db.sqlite3
 
-# Node
-node_modules/
-dist/
 
 # VSCode
 .vscode/
