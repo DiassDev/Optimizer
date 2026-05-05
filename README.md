@@ -5,7 +5,7 @@ Sistema de alocação de salas baseado em Pesquisa Operacional (PLI).
 ## Stack
 
 - Backend: Django + DRF + PuLP + NumPy
-- Frontend: React + Vite + TypeScript
+- Frontend: Padrão do Django ( templates )
 
 ## Estrutura
 
