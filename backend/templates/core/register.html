@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cadastro | Optimizer</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/register.css' %}"
+    >
+
+</head>
+
+<body>
+
+    <main class="register-wrapper">
+
+        <!-- Painel esquerdo -->
+
+        <section class="register-banner">
+
+            <div class="banner-overlay"></div>
+
+            <div class="banner-content">
+
+                <h1>Optimizer</h1>
+
+                <div class="banner-text">
+
+                    <h2>
+                        Comece a otimizar
+                        <span>agora.</span>
+                    </h2>
+
+                    <p>
+                        Crie sua conta e transforme
+                        a gestão de recursos.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Painel direito -->
+
+        <section class="register-panel">
+
+            <div class="panel-content">
+
+                <div class="panel-header">
+
+                    <h2>Criar conta</h2>
+
+                    <p>
+                        Preencha os dados abaixo
+                    </p>
+
+                </div>
+
+                {% if form.non_field_errors %}
+
+                    <div class="form-error">
+
+                        {% for error in form.non_field_errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+                <form method="POST" class="register-form">
+
+                    {% csrf_token %}
+
+                    <!-- Usuário -->
+
+                    <div class="input-group">
+
+                        <label>Usuário</label>
+
+                        {{ form.username }}
+
+                        {% if form.username.errors %}
+                            <span class="input-error">
+                                {{ form.username.errors.0 }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="input-group">
+
+                        <label>E-mail</label>
+
+                        {{ form.email }}
+
+                        {% if form.email.errors %}
+                            <span class="input-error">
+                                {{ form.email.errors.0 }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Senha -->
+
+                    <div class="input-group">
+
+                        <label>Senha</label>
+
+                        {{ form.password1 }}
+
+                        {% if form.password1.errors %}
+                            <span class="input-error">
+                                {{ form.password1.errors.0 }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- Confirmar senha -->
+
+                    <div class="input-group">
+
+                        <label>Confirmar senha</label>
+
+                        {{ form.password2 }}
+
+                        {% if form.password2.errors %}
+                            <span class="input-error">
+                                {{ form.password2.errors.0 }}
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="register-button"
+                    >
+                        Criar conta
+                    </button>
+
+                </form>
+
+                <div class="login-link">
+
+                    <p>
+                        Já possui conta?
+
+                        <a href="/login/">
+                            Entrar
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
