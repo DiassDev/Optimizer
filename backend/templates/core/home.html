@@ -19,6 +19,11 @@
         href="{% static 'css/home.css' %}"
     >
 
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
 </head>
 
 <body>
@@ -31,30 +36,75 @@
 
             <div class="sidebar-top">
 
-                <h1 class="logo">
-                    Optimizer
-                </h1>
+                <div class="logo-icon">
+
+                    <img
+                        class="logo-banner"
+                        src="{% static 'img/logo.png' %}"
+                    >
+
+                    <h1 class="logo">
+                        Optimizer
+                    </h1>
+
+                </div>
 
                 <nav class="sidebar-nav">
 
+                    <p class="nav-subtitle">
+                        Geral
+                    </p>
+
                     <a href="#" class="active">
+
+                        <i class="fa-solid fa-bars"></i>
+
                         Dashboard
+
                     </a>
 
                     <a href="#">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        Turmas
+
+                    </a>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-chalkboard"></i>
+
                         Salas
+
                     </a>
 
                     <a href="#">
-                        Alocações
+
+                        <i class="fa-solid fa-boxes-stacked"></i>
+
+                        Recursos
+
+                    </a>
+
+                    <p class="nav-performance">
+                        Performance
+                    </p>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-chart-simple"></i>
+
+                        Resultados
+
                     </a>
 
                     <a href="#">
-                        Relatórios
-                    </a>
 
-                    <a href="#">
-                        Usuários
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        Histórico
+
                     </a>
 
                 </nav>
@@ -67,7 +117,7 @@
                     href="{% url 'logout' %}"
                     class="logout-button"
                 >
-                    Logout
+                    Sair
                 </a>
 
             </div>
@@ -83,15 +133,15 @@
 
             <header class="topbar">
 
-                <div>
+                <div class="searchbar">
 
-                    <h2>
-                        Dashboard
-                    </h2>
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
 
-                    <p>
-                        Bem-vindo ao Optimizer
-                    </p>
+                    <input
+                        type="text"
+                        placeholder="Pesquisar..."
+                        class="search-input"
+                    >
 
                 </div>
 
@@ -102,36 +152,217 @@
 
             <section class="hero-grid">
 
+                <!-- HERO CARD -->
+
                 <div class="hero-card">
+                    
+                    <div class="glass-overlay"></div>
+                    <div class="top-highlight"></div>
 
                     <div class="hero-content">
 
                         <span>
-                            Sistema de Otimização
+                            Otimize a distribuição
                         </span>
 
                         <h1>
-                            Gestão inteligente
-                            de alocação
+                            Utilize o Solver e descubra
+                            a melhor distribuição.
                         </h1>
 
                         <p>
-                            Controle ambientes,
-                            recursos e eficiência
-                            operacional em tempo real.
+                            Otimize, distribua e organize
+                            suas salas em segundos.
                         </p>
+
+                        <button class="solver-cta">
+
+                            Utilizar o Solver agora
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
 
                     </div>
 
+                    <img
+                        class="hero-img"
+                        src="{% static 'img/hero-img.png' %}"
+                    >
+
                 </div>
+
+
+                <!-- SCHEDULE CARD -->
 
                 <div class="stats-card">
 
-                    <h3>
-                        Eficiência
-                    </h3>
+                    <div class="schedule-header">
 
-                    <div class="graph-placeholder"></div>
+                        <div>
+
+                            <p class="schedule-month">
+                                Outubro 2026
+                            </p>
+
+                            <h3>
+                                Suas turmas
+                            </h3>
+
+                        </div>
+
+                        <button class="schedule-more">
+
+                            <i class="fa-solid fa-ellipsis"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- CALENDAR -->
+
+                    <div class="calendar-row">
+
+                        <div class="calendar-day">
+
+                            <span>SEG</span>
+
+                            <p>21</p>
+
+                        </div>
+
+                        <div class="calendar-day">
+
+                            <span>TER</span>
+
+                            <p>22</p>
+
+                        </div>
+
+                        <div class="calendar-day active">
+
+                            <span>QUA</span>
+
+                            <p>23</p>
+
+                        </div>
+
+                        <div class="calendar-day">
+
+                            <span>QUI</span>
+
+                            <p>24</p>
+
+                        </div>
+
+                        <div class="calendar-day">
+
+                            <span>SEX</span>
+
+                            <p>25</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CLASS LIST -->
+
+                    <div class="class-list">
+
+                        <!-- CLASS ITEM -->
+
+                        <div class="class-card">
+
+                            <div class="class-card-top">
+
+                                <div>
+
+                                    <h4>
+                                        Engenharia de Software
+                                    </h4>
+
+                                    <p>
+                                        Laboratório 04 • 19:00
+                                    </p>
+
+                                </div>
+
+                                <span class="class-badge">
+                                    Hoje
+                                </span>
+
+                            </div>
+
+
+                            <div class="class-card-bottom">
+
+                                <div class="student-group">
+
+                                    <div class="student-avatar"></div>
+
+                                    <div class="student-avatar"></div>
+
+                                    <div class="student-avatar"></div>
+
+                                </div>
+
+                                <button class="class-button">
+                                    Abrir turma
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CLASS ITEM -->
+
+                        <div class="class-card secondary">
+
+                            <div class="class-card-top">
+
+                                <div>
+
+                                    <h4>
+                                        Banco de Dados
+                                    </h4>
+
+                                    <p>
+                                        Sala 02 • 20:40
+                                    </p>
+
+                                </div>
+
+                                <span class="class-badge">
+                                    Próxima
+                                </span>
+
+                            </div>
+
+
+                            <div class="class-card-bottom">
+
+                                <div class="student-group">
+
+                                    <div class="student-avatar"></div>
+
+                                    <div class="student-avatar"></div>
+
+                                    <div class="student-avatar"></div>
+
+                                </div>
+
+                                <button class="class-button">
+                                    Abrir turma
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -140,41 +371,105 @@
 
             <!-- METRICS -->
 
+            <!-- METRICS -->
+
             <section class="metrics-grid">
 
                 <div class="metric-card">
 
-                    <span>
-                        Salas ativas
-                    </span>
+                    <div class="metric-top">
 
-                    <h2>
-                        24
-                    </h2>
+                        <div class="metric-icon metric-purple">
+                            <i class="fa-solid fa-door-open"></i>
+                        </div>
+
+                        <div class="metric-badge positive">
+                            +3%
+                        </div>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span>
+                            Salas ativas
+                        </span>
+
+                        <h2>
+                            24
+                        </h2>
+
+                        <p>
+                            +3 salas disponíveis hoje
+                        </p>
+
+                    </div>
 
                 </div>
 
+
                 <div class="metric-card">
 
-                    <span>
-                        Alocações
-                    </span>
+                    <div class="metric-top">
 
-                    <h2>
-                        128
-                    </h2>
+                        <div class="metric-icon metric-blue">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+
+                        <div class="metric-badge positive">
+                            +12%
+                        </div>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span>
+                            Alocações
+                        </span>
+
+                        <h2>
+                            128
+                        </h2>
+
+                        <p>
+                            Fluxo otimizado esta semana
+                        </p>
+
+                    </div>
 
                 </div>
 
+
                 <div class="metric-card">
 
-                    <span>
-                        Eficiência
-                    </span>
+                    <div class="metric-top">
 
-                    <h2>
-                        94%
-                    </h2>
+                        <div class="metric-icon metric-pink">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+
+                        <div class="metric-badge positive">
+                            +8%
+                        </div>
+
+                    </div>
+
+                    <div class="metric-content">
+
+                        <span>
+                            Eficiência
+                        </span>
+
+                        <h2>
+                            94%
+                        </h2>
+
+                        <p>
+                            Melhor desempenho operacional
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -216,6 +511,24 @@
                             <td>Ativa</td>
                             <td>40</td>
                             <td>92%</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Lab 03</td>
+                            <td>Ocupada</td>
+                            <td>32</td>
+                            <td>88%</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Sala 12</td>
+                            <td>Disponível</td>
+                            <td>28</td>
+                            <td>97%</td>
 
                         </tr>
 
