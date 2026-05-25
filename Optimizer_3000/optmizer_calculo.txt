@@ -1,0 +1,45 @@
+2 salas e 2 turmas
+
+sala 101 e 102
+turma 1ano e turma 2ano
+
+capacidade sala 101 = 30 
+capacidade sala 102 = 20
+
+alunos 1ano = 25
+alunos 2 ano = 15
+
+o valor vai ser calculado da seguinte forma
+primeiramente vamos registrar uma vertente de cada turma para cada sala, esta irá receber um valor ou de 0 ou de 1
+após isso o z será capacidade da sala - a soma de todas as turmas (ou melhor conjunto de turmas) multiplicadas por seus respectivos números de alunos
+no exemplo acima teriamos
+
+z = (30 - (t1_101*25)+(t2_101*15)) + (20 - (t1_102*25)+(t2_102*15))
+
+as restrições seriam as seguintes
+
+nenhuma sala pode ter sua ocupação maior que sua capacidade
+ou seja
+30 - (t1_101*25)+(t2_101*15)) >= 0
+mesma coisa para a sala 102
+20 - (t1_102*25)+(t2_102*15) >= 0 
+
+mais de um grupo de turmas (agrupada exteriormente ao cálculo) não pode estar na mesma sala, porém uma sala pode ficar vazia caso isso seja possível
+isso vai para cada variável criada por agrupamento de turmas para sala
+no caso acima 
+t1_101+t2_101 <=1
+e
+t1_102+t2_102 <=1
+
+Uma turma só pode estar em uma sala e toda turma deve estar em pelomenos uma sala
+nesse caso todas as variáveis de turma 1 e turma 2 somadas tem de ser igual a 1
+t1_101+t1_102 == 1 
+e
+t2_101+t2_102 == 1
+
+E por fim, grupos de turmas que possuam algum pcd (cadeirante) só podem ficar no primeiro andar
+nesse caso não se aplica mas se tivessemos por exemplo salas 101 ,201 e 301
+e turmas 1 e 2 sendo que a turma 1 possúi 1 ou mais pessoas pcd:
+t1_201+t1_301 == 0 No caso isso poderia ser feito com todas os agrupamentos de turmas com pcd, uma vez que o somatório de seus valores tem de ser 0.
+
+O menor valor obtido seria o valor em que (com todas as condições cumpridas) venha a minimizar o total de espaços vazios nas salas

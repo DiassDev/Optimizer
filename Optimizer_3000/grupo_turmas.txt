@@ -1,0 +1,5 @@
+{
+'t1':{'turmas':['1p_eng_software','3p_eng_software'],'num_alunos':40,'pcd':True},
+'t2':{'turmas':['1p_arquiterura','3p_arquitetura'],'num_alunos':20,'pcd':False},
+'t3':{'turmas':['1p_arquiterura','3p_arquitetura'],'num_alunos':30,'pcd':False}
+}
