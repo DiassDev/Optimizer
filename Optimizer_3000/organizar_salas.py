@@ -8,8 +8,16 @@ temp = open('salas.txt','r',encoding='utf-8')
 valor = temp.read()
 valor = eval(valor)
 temp.close()
+#turmas_dias = {} # relação entre turma e os dias de aula por semana, exemplo{'t1':3} significa que a turma tem que ter 3 aulas em uma semana
 
 salas = valor #exemplo {'101':45,'102':30}
+temp = {}
+for repetir in range(1,6): # Essa parte é para fazer todas as variações de salas de segundo vulgo sala_1 até sexta sala_5. exeplo: 101_1,101_2,...,101_5
+ for w in salas:
+  temp[f'{w}_{repetir}'] = salas[w] # Busca a capacidade da sala e cria sua variante para cada dia da semana
+
+salas = temp # Transfere o resultado acima para a variável salas.Caso tenha algum problema com isso comente essa parte.
+
 
 num_alunos = [] # Separa o número de alunos para ser utilizado depois no programa
 for i in grupo_turmas:
@@ -30,8 +38,10 @@ for t in grupo_turmas:
    salas_turmas[s] = []
   if s in salas_turmas:
    salas_turmas[s].append(temp)
+#   turmas_dias[temp] = grupo_turmas[t]['dias_por_semana'] #Faz a relação das turmas com os dias que existem aulas. Exemplo turmas_dias[t1_101_1] = 3 ou seja a t1 tem que estar presente por 3 dias da semana.
+   
   if s[0] !='1' and grupo_turmas[t]['pcd'] == True: # Caso a sala não termine em um e a turma tenha pcd marcado como verdadeiro.
-   temp5 = temp5 + temp+' + '
+   temp5 = temp5 + temp+' + ' # Relacionado com a última restrição e não com a criação de grupo_turmas
 
 temp5 = temp5[:-3]
 temp5 = temp5 + ' == 0'
@@ -39,8 +49,8 @@ temp5 = temp5 + ' == 0'
 if temp5 == "\n\nproblema  == 0": # Nesse caso, nenhum dos grupos de turmas possúi pcd como True
  temp5 = ""
 
-
-
+#print(turmas_dias)
+#input()
 temp = "\nproblema += " # Constroi a função utilizando as salas relacionadas com as turmas e o número de alunos
 
 temp2 = "\n\n" # Eu vou aproveitar esse for para conseguir a primeira restrição no caso que a sala não pode ter mais alunos que sua capacidade
@@ -77,14 +87,50 @@ txt = txt + temp3 # Seguindo a nova moda de otimizar, assim como no temp2 o temp
 # A terceira restrição é que um grupo de turmas deve estart alocado em pelomenos uma sala e no máximo uma sala, por exemplo: t1_101 +t1_102 == 1
 temp4 = "\n\n" # Ironicamente o temp4 veio depois do temp5, esse é da restrição que um grupo de turmas deve ocupar no mínimo uma sala e no máximo uma sala
 
+
 for t in grupo_turmas: # gera uma linha com todas as variáveis de possibilidade de uma determinada turma
  temp4 = temp4 + 'problema += '
  for s in salas:
   temp4 = temp4 +f'{t}_{s} + '
  temp4 = temp4[:-3]
- temp4 = temp4 + ' == 1\n\n'
+ temp4 = temp4 + f" == {grupo_turmas[t]['dias_por_semana']}\n\n" # Aqui vai ocorrer a mudança requisitada pelo professor o que antes era ==1 será == {número de dias que a turma tem que ocupar salas}
+
 
 txt = txt + temp4
+
+
+# Uma nova restrição terá de ser criada, para garantir que uma turma só possa ocupar uma sala por dia
+temp6 = "\n\n"
+lista_dias_semana = ["","","","",""]#0 é segunda 1 é terça até 4 que é sexta.
+
+for t in grupo_turmas: # gera uma linha com todas as variáveis de possibilidade de uma determinada turma
+ for s in salas:
+  temp7 = f'{t}_{s}'
+  if temp7[-1] == '1':   # Segunda
+   lista_dias_semana[0] = lista_dias_semana[0] + f'{temp7} + '
+  elif temp7[-1] == '2': # Terça
+   lista_dias_semana[1] = lista_dias_semana[1] + f'{temp7} + '
+  elif temp7[-1] == '3': # Quarta
+   lista_dias_semana[2] = lista_dias_semana[2] + f'{temp7} + ' 
+  elif temp7[-1] == '4': # Quinta
+   lista_dias_semana[3] = lista_dias_semana[3] + f'{temp7} + '
+  elif temp7[-1] == '5': # Sexta
+   lista_dias_semana[4] = lista_dias_semana[4] + f'{temp7} + '
+
+  else:
+   pass # Esse caso na teoria é impossível pois o programa comporta no máximo 5 dias da semana, de segunda até sexta.
+ lista_dias_semana[0] = lista_dias_semana[0][:-3]
+ lista_dias_semana[1] = lista_dias_semana[1][:-3]
+ lista_dias_semana[2] = lista_dias_semana[2][:-3]
+ lista_dias_semana[3] = lista_dias_semana[3][:-3]
+ lista_dias_semana[4] = lista_dias_semana[4][:-3]
+ for l in lista_dias_semana:
+  temp6 = temp6 + f'problema += {l} <=1\n'
+ temp6 = temp6 + '\n\n'
+ lista_dias_semana = ["","","","",""] # Após o processamento desses dados a lista reseta para ser novamente utilizada para a próxima turma.
+
+txt = txt + temp6 # Adiciona a restrição de que 1 pode ocupar 1 sala ou nenhuma por dia.
+
 # A última restrição é que, se o grupo de turmas possuir pcd, ela só pode ficar no primeiro andar
 txt = txt + temp5
 
