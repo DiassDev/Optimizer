@@ -1,0 +1,6 @@
+{
+'t1':{'turmas':['1p_eng_software','3p_eng_software'],'num_alunos':40,'pcd':True,'dias_por_semana':3},
+'t2':{'turmas':['1p_arquiterura','3p_arquitetura'],'num_alunos':20,'pcd':False,'dias_por_semana':2},
+'t3':{'turmas':['1p_mecanica','3p_mecanica','5p_mecanica'],'num_alunos':30,'pcd':False,'dias_por_semana':2},
+'t4':{'turmas':['1p_SI'],'num_alunos':30,'pcd':False,'dias_por_semana':2}
+}
